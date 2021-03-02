@@ -88,6 +88,10 @@ nav {
     padding-bottom: 40px;
 }
 
+.tweets-list {
+    margin: 20px;
+}
+
 .tweets-sidebar-container {
     flex: 1;
     position: relative;
@@ -173,3 +177,4 @@ nav {
 .next-page-container {
     color: white;
 }
+
