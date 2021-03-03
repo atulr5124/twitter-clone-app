@@ -10,6 +10,7 @@ const onEnter = (e) => {
  * Retrive Twitter Data from API
  */
 const getTwitterData = () => {
+    document.querySelector('.tweets-list').innerHTML = ""
     const user_search_input = document.getElementById('user-search-input').value
     if(!user_search_input) return
     const encoded_query = encodeURIComponent(user_search_input)
@@ -30,6 +31,8 @@ const saveNextPage = (metadata) => {
  * Handle when a user clicks on a trend
  */
 const selectTrend = (e) => {
+    document.getElementById('user-search-input').value = e.innerText
+    getTwitterData()
 }
 
 /**
