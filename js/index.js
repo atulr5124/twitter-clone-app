@@ -59,8 +59,17 @@ const buildTweets = (tweets, nextPage) => {
                 </div>
             </div>
         `
-        if(tweet.entities.media) {
+        if(tweet['entities']['media']) {
+            tweetsContent += `<div class="tweet-media-container">`
+            tweet['entities']['media'].map((mediatype) => {
+                if(mediatype.type == "photo") {
+                    tweetsContent += buildImages(mediatype)
+                } else if (mediatype.type == "video") {
+
+                }
+            })
             tweetsContent += buildImages(tweet.entities.media)
+            tweetsContent += `</div>`
         }
 
         tweetsContent += `<div class="tweet-text-container">
@@ -80,11 +89,7 @@ const buildTweets = (tweets, nextPage) => {
  */
 const buildImages = (mediaList) => {
     let tweetsContent = ""
-    tweetsContent += `<div class="tweet-media-container">`
-        for(image in mediaList) {
-            tweetsContent += `<div class="tweet-image" style="background-image:url('${mediaList[0]['media_url']}')"></div>`
-        }
-    tweetsContent += `</div>`
+    tweetsContent += `<div class="tweet-image" style="background-image:url('${mediaList['media_url']}')"></div>`
     return tweetsContent
 }
 
